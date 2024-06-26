@@ -18,7 +18,11 @@
         "https://*.twitter.com/*",
         "http://*.twitter.com/*",
         "https://twitter.com/*",
-        "http://twitter.com/*"
+        "http://twitter.com/*",
+        "https://*.x.com/*",
+        "http://*.x.com/*",
+        "https://x.com/*",
+        "http://x.com/*"
       ]
     }
   ],
