@@ -1,0 +1,51 @@
+# For most projects, this workflow file will not need changing; you simply need
+# to commit it to your repository.
+#
+# You may wish to alter this file to override the set of languages analyzed,
+# or to provide custom queries or build logic.
+name: 'CodeQL'
+
+on:
+  push:
+    branches: [ 'main' ]
+  pull_request:
+    branches: [ 'main' ]
+
+jobs:
+  codeql:
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+      statuses: write
+
+    name: 'CodeQL'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v4
+
+      - name: 'Set up Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 'Yarn Install'
+        run: yarn install
+
+      - name: 'Run ESLint'
+        run: yarn run eslint .
+
+      - name: 'Initialize CodeQL'
+        uses: github/codeql-action/init@v3
+        with:
+          languages: 'javascript,typescript'
+
+      - name: 'Yarn Build'
+        run: yarn run build
+
+      - name: 'Run CodeQL Analysis'
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript-typescript"
