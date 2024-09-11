@@ -92,14 +92,17 @@ const readPage = (): void => {
 
         if (title.endsWith('Home / X')) {
             updateStoredCheckNames(new Set<string>())
+
             chrome.runtime.sendMessage(
                 {
                     from: 'content',
                     type: 'parsed-page',
                     message: {names: []}
                 },
+
                 function (response) {
-                    // TODO: Handle response
+                    // Output response to console
+                    console.log(response)
                 }
             )
             return
@@ -194,7 +197,8 @@ const readPage = (): void => {
         },
 
         function (response) {
-            // TODO: Handle response
+            // Output response to console
+            console.log(response)
         }
     )
 }
