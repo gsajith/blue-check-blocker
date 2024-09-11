@@ -204,6 +204,8 @@ const readPage = (): void => {
 }
 
 readPage()
-setInterval(readPage, 250) // TODO: What is this magic number?
+
+const intervalId = 250;
+setInterval(readPage, intervalId)
 
 export {}
