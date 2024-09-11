@@ -17,7 +17,7 @@ scope of the potential issue. This should include:
 - The version of the project you are using
 - Any other relevant information
 
-We take all disclosures seriously and will do our best to address any issues in a timely manner. Please do not disclose
-the vulnerability publicly until we've had a chance to address it.
+We take all disclosures seriously and will do our best to address any issues in a timely manner.
+Please do not disclose the vulnerability publicly until we've had a chance to address it.
 
 Thank you for helping to keep this project and its users safe!
