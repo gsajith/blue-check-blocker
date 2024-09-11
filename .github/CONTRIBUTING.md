@@ -12,8 +12,8 @@ By participating, you are expected to uphold this code.
 
 ### Reporting Bugs
 
-This section guides you through submitting a bug report for this project. Following these guidelines helps maintainers and
-the community understand your report, reproduce the behavior, and find related reports.
+This section guides you through submitting a bug report for this project. Following these guidelines helps maintainers
+and the community understand your report, reproduce the behavior, and find related reports.
 
 - Use a clear and descriptive title for the issue to identify the problem.
 - Describe the exact steps which reproduce the problem in as many details as possible.
@@ -21,7 +21,8 @@ the community understand your report, reproduce the behavior, and find related r
 
 ### Suggesting Features
 
-This section guides you through submitting a feature request for this project, including completely new features and minor
+This section guides you through submitting a feature request for this project, including completely new features and
+minor
 improvements to existing functionality.
 
 - Use a clear and descriptive title for the issue to identify the suggestion.
