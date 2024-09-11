@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Blue Check Hider",
-  "version": "1.3",
-  "description": "Identify and hide Twitter Blue users",
+  "version": "1.4.0",
+  "description": "Identify and hide Twitter Blue users.",
   "permissions": [
     "activeTab",
     "storage"
@@ -21,13 +21,9 @@
       "run_at": "document_end",
       "matches": [
         "https://*.twitter.com/*",
-        "http://*.twitter.com/*",
         "https://twitter.com/*",
-        "http://twitter.com/*",
         "https://*.x.com/*",
-        "http://*.x.com/*",
-        "https://x.com/*",
-        "http://x.com/*"
+        "https://x.com/*"
       ]
     }
   ],
