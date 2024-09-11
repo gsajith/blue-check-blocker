@@ -14,6 +14,8 @@ Blue Check Hider is a Chrome extension which hides any posts made by people with
 - Create a `build` folder with `yarn run build` (once) or `yarn run watch` (continuous build).
 - Follow the instructions to [load an unpacked Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked), and load the `build` folder generated in the previous step
 
+You can also download the [latest artifact](https://github.com/Foulest/blue-check-hider/actions) or [release](https://github.com/Foulest/blue-check-hider/releases) from this repository.
+
 ---
 
 ## Progress
