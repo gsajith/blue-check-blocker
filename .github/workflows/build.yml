@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: 'Build with Gradle'
+    name: 'Build with Yarn'
     runs-on: ubuntu-latest
 
     steps:
