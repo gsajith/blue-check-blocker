@@ -197,7 +197,7 @@ export const App = (): ReactElement | null => {
             <div style={{padding: 12}}>
                 <ToggleSwitch
                     onText="Applies to replies only"
-                    offText="Applies to all tweets"
+                    offText="Applies to replies only"
                     handleChecked={(checked) => {
                         setHideRepliesOnly(checked)
                     }}
