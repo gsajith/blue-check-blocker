@@ -28,8 +28,8 @@ jobs:
       run: yarn install
 
     # Step 4: Set up ESLint
-    - name: Set up ESLint
-      run: npx npm init @eslint/config
+    - name: Run ESLint
+      run: yarn run eslint .
 
     # Step 5: Build the Chrome extension
     - name: Build the Chrome Extension
