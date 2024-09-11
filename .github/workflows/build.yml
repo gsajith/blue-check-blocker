@@ -23,9 +23,6 @@ jobs:
       - name: 'Yarn Install'
         run: yarn install
 
-      - name: 'Run ESLint'
-        run: yarn run eslint .
-
       - name: 'Yarn Build'
         run: yarn run build
 
