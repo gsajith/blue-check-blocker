@@ -21,7 +21,7 @@
 
 > **Note:** These steps might not work correctly and could be outdated.
 
-1. Clone the repo.
+1. Clone the repository.
 2. Install dependencies with `yarn install`.
 3. Set up ESLint `npm init @eslint/config`
 4. Create a `build` folder with `yarn run build` (once) or `yarn run watch` (continuous build).
