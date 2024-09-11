@@ -9,20 +9,7 @@
 **Blue Check Hider** is a Chrome extension that hides posts from people with a blue checkmark
 on [Twitter/X](https://twitter.com).
 
-> **Note:** This is an updated fork of the original **[Blue Check Hider](https://github.com/gsajith/blue-check-hider)**
-> project.
->
-> All credit for the original project goes to **[Gautham Sajith](https://github.com/gsajith)**.
-
-## Changes Made
-
-- Includes all features of the original Blue Check Hider project *(version 1.3)*
-- Added a CI (continuous build) action to automatically build on push/pull
-- Minor code changes and improvements
-
 ## Compiling
-
-> **Note:** These steps might not work correctly and could be outdated.
 
 1. Clone the repository.
 2. Install dependencies with `yarn install`.
