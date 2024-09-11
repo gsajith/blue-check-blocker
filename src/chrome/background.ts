@@ -9,8 +9,8 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onMessage.addListener(
     (
         message: ChromeMessage,
-        sender: chrome.runtime.MessageSender,
-        sendResponse: MessageResponse
+        _sender: chrome.runtime.MessageSender,
+        _sendResponse: MessageResponse
     ) => {
         if (message.from === Sender.Content && message.type === 'parsed-page') {
             console.log(message.message)
