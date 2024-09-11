@@ -1,0 +1,43 @@
+name: Build Chrome Extension
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Step 2: Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: yarn install
+
+    # Step 4: Set up ESLint
+    - name: Set up ESLint
+      run: npx npm init @eslint/config
+
+    # Step 5: Build the Chrome extension
+    - name: Build the Chrome Extension
+      run: yarn run build
+
+    # Step 6: Archive the build folder as an artifact
+    - name: Upload build folder as an artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-folder
+        path: build/
