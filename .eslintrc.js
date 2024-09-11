@@ -12,7 +12,7 @@ module.exports = {
   plugins: ['react'],
   settings: {
     react: {
-      version: 'detect'  // Automatically detect the version of React
+      version: 'detect'
     }
   },
   rules: {}
