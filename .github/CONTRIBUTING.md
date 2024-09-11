@@ -4,8 +4,9 @@ Thank you for considering contributing to this project. Your help is appreciated
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the project's Code of Conduct. By participating, you are
-expected to uphold this code.
+This project and everyone participating in it is governed by the project's [Code of Conduct](CODE_OF_CONDUCT.md).
+
+By participating, you are expected to uphold this code.
 
 ## How Can I Contribute?
 
