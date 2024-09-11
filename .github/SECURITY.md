@@ -1,14 +1,12 @@
 # Security Policy
 
-## Supported Versions
-
-Only the most recent version of this project is supported with security updates. Each new release deprecates all older
-versions.
+> **Note:** Only the most recent version of this project is supported with security updates.
+>
+> If you are using an older version, please update to the latest version.
 
 ## Reporting a Vulnerability
 
-If you discover a vulnerability, please report it using the
-[Security section](https://github.com/Foulest/blue-check-hider/security) in the GitHub repository.
+If you discover a vulnerability, please report it using the [Security section](security) in the GitHub repository.
 
 When reporting a vulnerability, please provide as much information as possible to help us understand the nature and
 scope of the potential issue. This should include:
