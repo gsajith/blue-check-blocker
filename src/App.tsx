@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, {ReactElement, useEffect, useState} from 'react'
 import {getCurrentTabUId} from './chrome/utils'
 import {Accordion} from './components/Accordion'
 import ToggleSwitch from './components/ToggleSwitch'
 
-export const App = (): JSX.Element => {
+export const App = (): ReactElement | null => {
     const [names, setNames] = useState<string[]>([])
     const [allNames, setAllNames] = useState<string[]>([])
     const [currentTabId, setCurrentTabId] = useState<number>(-1)

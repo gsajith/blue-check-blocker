@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {ReactElement} from 'react'
 import styled from 'styled-components'
 import {Name} from './Name'
 
@@ -46,7 +46,7 @@ const AccordionItemsWrapper = styled.div`
     overflow-y: scroll;
 `
 
-export const Accordion = (props: AccordionProps): JSX.Element => {
+export const Accordion = (props: AccordionProps): ReactElement | null => {
     return (<AccordionWrapper>
         <AccordionHeader>
             <AccordionTitleCount>{props.items.length}</AccordionTitleCount>{props.title}

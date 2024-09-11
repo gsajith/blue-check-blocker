@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React from 'react'
+import React, {ReactElement} from 'react'
 
 const Switch = styled.div`
     position: relative;
@@ -49,7 +49,7 @@ interface ToggleSwitchProps {
     checked?: boolean
 }
 
-const ToggleSwitch = ({onText, offText, handleChecked, checked}: ToggleSwitchProps): JSX.Element => {
+const ToggleSwitch = ({onText, offText, handleChecked, checked}: ToggleSwitchProps): ReactElement | null => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         handleChecked(e.target.checked)
     }
