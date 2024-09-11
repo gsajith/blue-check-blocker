@@ -7,9 +7,10 @@ assignees: 'Foulest'
 
 ---
 
-**Before you submit this issue, please make sure you have done the following:**
+**Before you submit this, please make sure you have done the following:**
 
 - [ ] I am using the latest version of this project
+- [ ] I have checked the existing documentation for this project
 - [ ] I have searched the issue tracker for a similar issue
 
 **Describe the bug**
@@ -33,4 +34,4 @@ Steps to reproduce the behavior:
 If applicable, add screenshots or animated GIFs to help explain your problem.
 
 **Additional context**
-Add any other context about the problem here.
+Add any other context about the issue here.
