@@ -1,6 +1,5 @@
 # Blue Check Hider
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CodeQL](https://github.com/Foulest/blue-check-hider/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Foulest/blue-check-hider/actions/workflows/github-code-scanning/codeql)
 [![Downloads](https://img.shields.io/github/downloads/Foulest/blue-check-hider/total.svg)](https://github.com/Foulest/blue-check-hider/releases)
 
