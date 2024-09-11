@@ -48,28 +48,15 @@ const isBlueCheck = (element: Element): boolean => {
 }
 
 let unhideCount = 0
-
 let shouldHide: (boolean | null) = null
-let hideRepliesOnly: (boolean | null) = null
-let fullyHide: (boolean | null) = null
 let hideGold: (boolean | null) = null
 let hideGrey: (boolean | null) = null
+let fullyHide: (boolean | null) = null
+let hideRepliesOnly: (boolean | null) = null
 
 chrome.storage.local.get('hidingEnabled', (result) => {
     if (result.hidingEnabled !== undefined) {
         shouldHide = result.hidingEnabled
-    }
-})
-
-chrome.storage.local.get('hideRepliesOnly', (result) => {
-    if (result.hideRepliesOnly !== undefined) {
-        hideRepliesOnly = result.hideRepliesOnly
-    }
-})
-
-chrome.storage.local.get('fullyHide', (result) => {
-    if (result.fullyHide !== undefined) {
-        fullyHide = result.fullyHide
     }
 })
 
@@ -82,6 +69,18 @@ chrome.storage.local.get('hideGoldChecks', (result) => {
 chrome.storage.local.get('hideGreyChecks', (result) => {
     if (result.hideGreyChecks !== undefined) {
         hideGrey = result.hideGreyChecks
+    }
+})
+
+chrome.storage.local.get('fullyHide', (result) => {
+    if (result.fullyHide !== undefined) {
+        fullyHide = result.fullyHide
+    }
+})
+
+chrome.storage.local.get('hideRepliesOnly', (result) => {
+    if (result.hideRepliesOnly !== undefined) {
+        hideRepliesOnly = result.hideRepliesOnly
     }
 })
 
@@ -98,11 +97,6 @@ const readPage = (): void => {
                     from: 'content',
                     type: 'parsed-page',
                     message: {names: []}
-                },
-
-                function (response) {
-                    // Output response to console
-                    console.log(response)
                 }
             )
             return
@@ -194,11 +188,6 @@ const readPage = (): void => {
             from: 'content',
             type: 'parsed-page',
             message: {names: [...checkNames]}
-        },
-
-        function (response) {
-            // Output response to console
-            console.log(response)
         }
     )
 }
