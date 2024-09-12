@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "INLINE_RUNTIME_CHUNK=false craco build",
+    "build": "cross-env INLINE_RUNTIME_CHUNK=false craco build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch": "npm-watch"
@@ -53,7 +53,8 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.0.270",
-    "@types/react-router-dom": "^5.3.3"
+    "@types/react-router-dom": "^5.3.3",
+    "cross-env": "^7.0.3"
   },
   "main": "index.js",
   "license": "MIT"
