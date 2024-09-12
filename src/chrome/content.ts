@@ -1,13 +1,6 @@
-// TODO: These functions seems brittle
 const getUsernameFromHeader = (userName: Element): string => {
     return userName.children[0].children[0].children[1].children[0].children[0].children[0].children[0].innerHTML
 };
-
-// const getUsernameFromUserCell = (userCell: Element): string => {
-//   return (userCell?.lastChild as Element)?.children[1].children[0].children[0].children[0]
-//     .children[1].children[0].children[0].children[0].children[0].children[0]
-//     .innerHTML
-// }
 
 const getUsernameFromFeed = (username: Element): string => {
     return username.children[1].children[0].children[0].children[0].children[0].children[0].innerHTML
@@ -15,7 +8,6 @@ const getUsernameFromFeed = (username: Element): string => {
 
 const updateStoredCheckNames = async (checkNames: Set<string>): Promise<any> => {
     const storedNames = await chrome.storage.local.get('storedBlueCheckNames');
-
     let allNames = new Set<string>([...checkNames]);
 
     if (storedNames.storedBlueCheckNames !== undefined) {
@@ -84,6 +76,24 @@ chrome.storage.local.get('hideRepliesOnly', (result) => {
     }
 });
 
+const observerCallback = (mutationsList: MutationRecord[]) => {
+    for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            readPage(); // Call your existing function when DOM changes
+        }
+    }
+};
+
+const setupMutationObserver = () => {
+    const observer = new MutationObserver(observerCallback);
+
+    // Configure the observer to watch for changes in the body of the page
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+};
+
 const readPage = (): void => {
     // Check if we're on the timeline
     if (hideRepliesOnly === true) {
@@ -99,15 +109,12 @@ const readPage = (): void => {
                     message: {names: []}
                 }
             );
-            return
+            return;
         }
     }
 
     // Detects profile page header blue check
     const usernameHeader = document.querySelectorAll('[data-testid="UserName"]');
-
-    // Detects "You might like" page blue checks
-    // const UserCells = document.querySelectorAll('[data-testid="UserCell"]')
 
     // Detects feed blue checks
     const usernameFeed = document.querySelectorAll('[data-testid="User-Name"]');
@@ -118,18 +125,9 @@ const readPage = (): void => {
         if (isBlueCheck(userName)) {
             // This is on profile page, nothing to do here
             // userName.setAttribute('style', 'display: none;')
-            checkNames.add(getUsernameFromHeader(userName))
+            checkNames.add(getUsernameFromHeader(userName));
         }
     });
-
-    // UserCells.forEach((userCell) => {
-    //   if (isBlueCheck(userCell)) {
-    //     if (shouldHide === true) {
-    //       userCell.setAttribute('style', 'display: none;')
-    //     }
-    //     checkNames.add(getUsernameFromUserCell(userCell))
-    //   }
-    // })
 
     usernameFeed.forEach((username) => {
         if (isBlueCheck(username)) {
@@ -155,11 +153,11 @@ const readPage = (): void => {
                             document.getElementById(id)?.addEventListener('click', (event) => {
                                 event.preventDefault();
                                 parentContainer.children[0].lastElementChild?.setAttribute('style', '');
-                                parentContainer.children[1].setAttribute('style', 'display: none;')
-                            })
+                                parentContainer.children[1].setAttribute('style', 'display: none;');
+                            });
                         }
 
-                        parentContainer.children[0].lastElementChild?.setAttribute('style', hideStyle)
+                        parentContainer.children[0].lastElementChild?.setAttribute('style', hideStyle);
                     } else if (parentContainer.children.length === 4) {
                         // Quote tweet on timeline
                         if (fullyHide === false) {
@@ -168,16 +166,16 @@ const readPage = (): void => {
                             document.getElementById(id)?.addEventListener('click', (event) => {
                                 event.preventDefault();
                                 parentContainer.children[2].lastElementChild?.setAttribute('style', '');
-                                parentContainer.children[3].setAttribute('style', 'display: none;')
-                            })
+                                parentContainer.children[3].setAttribute('style', 'display: none;');
+                            });
                         }
 
-                        parentContainer.children[2].lastElementChild?.setAttribute('style', hideStyle)
+                        parentContainer.children[2].lastElementChild?.setAttribute('style', hideStyle);
                     }
                 }
             }
 
-            checkNames.add(extractedName)
+            checkNames.add(extractedName);
         }
     });
 
@@ -189,12 +187,10 @@ const readPage = (): void => {
             type: 'parsed-page',
             message: {names: [...checkNames]}
         }
-    )
+    );
 };
 
-readPage();
-
-const intervalId = 250;
-setInterval(readPage, intervalId);
+// Initialize the MutationObserver
+setupMutationObserver();
 
 export {}
