@@ -4,28 +4,28 @@ import {Accordion} from './components/Accordion'
 import ToggleSwitch from './components/ToggleSwitch'
 
 export const App = (): ReactElement | null => {
-    const [names, setNames] = useState<string[]>([])
-    const [allNames, setAllNames] = useState<string[]>([])
-    const [currentTabId, setCurrentTabId] = useState<number>(-1)
-    const [hidingEnabled, setHidingEnabled] = useState<boolean>(true)
-    const [hideRepliesOnly, setHideRepliesOnly] = useState<boolean>(false)
-    const [hideGoldChecks, setHideGoldChecks] = useState<boolean>(true)
-    const [hideGreyChecks, setHideGreyChecks] = useState<boolean>(true)
-    const [fullyHide, setFullyHide] = useState<boolean>(false)
-    const initialLoadFlagHiding = React.useRef(true)
-    const initialLoadFlagHideRepliesOnly = React.useRef(true)
-    const initialLoadFlagFullyHide = React.useRef(true)
-    const initialLoadFlagHideGold = React.useRef(true)
-    const initialLoadFlagHideGrey = React.useRef(true)
+    const [names, setNames] = useState<string[]>([]);
+    const [allNames, setAllNames] = useState<string[]>([]);
+    const [currentTabId, setCurrentTabId] = useState<number>(-1);
+    const [hidingEnabled, setHidingEnabled] = useState<boolean>(true);
+    const [hideRepliesOnly, setHideRepliesOnly] = useState<boolean>(false);
+    const [hideGoldChecks, setHideGoldChecks] = useState<boolean>(true);
+    const [hideGreyChecks, setHideGreyChecks] = useState<boolean>(true);
+    const [fullyHide, setFullyHide] = useState<boolean>(false);
+    const initialLoadFlagHiding = React.useRef(true);
+    const initialLoadFlagHideRepliesOnly = React.useRef(true);
+    const initialLoadFlagFullyHide = React.useRef(true);
+    const initialLoadFlagHideGold = React.useRef(true);
+    const initialLoadFlagHideGrey = React.useRef(true);
 
     useEffect(() => {
         chrome.runtime.onMessage.addListener((message, sender) => {
             getCurrentTabUId((id) => {
                 setCurrentTabId(id ?? -1)
-            })
+            });
 
             if (message.from === 'content' && message.type === 'parsed-page' && sender?.tab?.id === currentTabId) {
-                setNames(message.message.names)
+                setNames(message.message.names);
 
                 chrome.storage.local.get('storedBlueCheckNames').then((storedNames) => {
                     if (storedNames.storedBlueCheckNames !== null) {
@@ -34,7 +34,7 @@ export const App = (): ReactElement | null => {
                 })
             }
         })
-    }, [currentTabId])
+    }, [currentTabId]);
 
     useEffect(() => {
         if (initialLoadFlagHiding.current) {
@@ -42,13 +42,13 @@ export const App = (): ReactElement | null => {
                 if (result.hidingEnabled === undefined) {
                     chrome.storage.local.set({hidingEnabled})
                 }
-            })
+            });
 
             initialLoadFlagHiding.current = false
         } else {
             chrome.storage.local.set({hidingEnabled})
         }
-    }, [hidingEnabled])
+    }, [hidingEnabled]);
 
     useEffect(() => {
         if (initialLoadFlagHideRepliesOnly.current) {
@@ -56,13 +56,13 @@ export const App = (): ReactElement | null => {
                 if (result.hideRepliesOnly === undefined) {
                     chrome.storage.local.set({hideRepliesOnly})
                 }
-            })
+            });
 
             initialLoadFlagHideRepliesOnly.current = false
         } else {
             chrome.storage.local.set({hideRepliesOnly})
         }
-    }, [hideRepliesOnly])
+    }, [hideRepliesOnly]);
 
     useEffect(() => {
         if (initialLoadFlagFullyHide.current) {
@@ -70,13 +70,13 @@ export const App = (): ReactElement | null => {
                 if (result.fullyHide === undefined) {
                     chrome.storage.local.set({fullyHide})
                 }
-            })
+            });
 
             initialLoadFlagFullyHide.current = false
         } else {
             chrome.storage.local.set({fullyHide})
         }
-    }, [fullyHide])
+    }, [fullyHide]);
 
     useEffect(() => {
         if (initialLoadFlagHideGold.current) {
@@ -84,13 +84,13 @@ export const App = (): ReactElement | null => {
                 if (result.hideGoldChecks === undefined) {
                     chrome.storage.local.set({hideGoldChecks})
                 }
-            })
+            });
 
             initialLoadFlagHideGold.current = false
         } else {
             chrome.storage.local.set({hideGoldChecks})
         }
-    }, [hideGoldChecks])
+    }, [hideGoldChecks]);
 
     useEffect(() => {
         if (initialLoadFlagHideGrey.current) {
@@ -98,13 +98,13 @@ export const App = (): ReactElement | null => {
                 if (result.hideGreyChecks === undefined) {
                     chrome.storage.local.set({hideGreyChecks})
                 }
-            })
+            });
 
             initialLoadFlagHideGrey.current = false
         } else {
             chrome.storage.local.set({hideGreyChecks})
         }
-    }, [hideGreyChecks])
+    }, [hideGreyChecks]);
 
     useEffect(() => {
         chrome.storage.local.get('hidingEnabled').then((result) => {
@@ -113,7 +113,7 @@ export const App = (): ReactElement | null => {
             } else {
                 setHidingEnabled(result.hidingEnabled)
             }
-        })
+        });
 
         chrome.storage.local.get('hideRepliesOnly').then((result) => {
             if (result.hideRepliesOnly === undefined) {
@@ -121,7 +121,7 @@ export const App = (): ReactElement | null => {
             } else {
                 setHideRepliesOnly(result.hideRepliesOnly)
             }
-        })
+        });
 
         chrome.storage.local.get('fullyHide').then((result) => {
             if (result.fullyHide === undefined) {
@@ -129,7 +129,7 @@ export const App = (): ReactElement | null => {
             } else {
                 setFullyHide(result.fullyHide)
             }
-        })
+        });
 
         chrome.storage.local.get('hideGoldChecks').then((result) => {
             if (result.hideGoldChecks === undefined) {
@@ -137,7 +137,7 @@ export const App = (): ReactElement | null => {
             } else {
                 setHideGoldChecks(result.hideGoldChecks)
             }
-        })
+        });
 
         chrome.storage.local.get('hideGreyChecks').then((result) => {
             if (result.hideGreyChecks === undefined) {
@@ -146,7 +146,7 @@ export const App = (): ReactElement | null => {
                 setHideGreyChecks(result.hideGreyChecks)
             }
         })
-    }, [])
+    }, []);
 
     return (
         <div>
@@ -211,6 +211,7 @@ export const App = (): ReactElement | null => {
             />
 
             <br/><br/>
+
             <div style={{display: 'none'}}>
                 <Accordion
                     items={allNames}
@@ -219,4 +220,4 @@ export const App = (): ReactElement | null => {
             </div>
         </div>
     )
-}
+};

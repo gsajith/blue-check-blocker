@@ -14,7 +14,7 @@ const AccordionWrapper = styled.div`
     border-radius: 6px;
     padding-top: 6px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
-`
+`;
 
 const AccordionHeader = styled.div`
     margin-left: 10px;
@@ -25,7 +25,7 @@ const AccordionHeader = styled.div`
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
-`
+`;
 
 const AccordionTitleCount = styled.span`
     border-radius: 100px;
@@ -33,7 +33,7 @@ const AccordionTitleCount = styled.span`
     color: rgb(74, 153, 233);
     padding: 8px;
     margin-right: 8px;
-`
+`;
 
 const AccordionItemsWrapper = styled.div`
     background-color: rgb(255, 255, 255);
@@ -44,7 +44,7 @@ const AccordionItemsWrapper = styled.div`
     min-height: 1px;
     max-height: 200px;
     overflow-y: scroll;
-`
+`;
 
 export const Accordion = (props: AccordionProps): ReactElement | null => {
     return (<AccordionWrapper>
@@ -55,4 +55,4 @@ export const Accordion = (props: AccordionProps): ReactElement | null => {
             {props.items.map((name) => <Name key={name}>{name}</Name>)}
         </AccordionItemsWrapper>
     </AccordionWrapper>)
-}
+};

@@ -4,7 +4,7 @@ type MessageResponse = (response?: any) => void
 
 chrome.runtime.onInstalled.addListener(() => {
     console.log('Installed')
-})
+});
 
 chrome.runtime.onMessage.addListener(
     (
@@ -16,4 +16,4 @@ chrome.runtime.onMessage.addListener(
             console.log(message.message)
         }
     }
-)
+);

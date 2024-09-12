@@ -10,6 +10,6 @@ const reportWebVitals = (onPerfEntry?: (metric: MetricType) => void) => {
             onTTFB(onPerfEntry);
         });
     }
-}
+};
 
 export default reportWebVitals

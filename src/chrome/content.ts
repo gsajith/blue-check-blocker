@@ -1,7 +1,7 @@
 // TODO: These functions seems brittle
 const getUsernameFromHeader = (userName: Element): string => {
     return userName.children[0].children[0].children[1].children[0].children[0].children[0].children[0].innerHTML
-}
+};
 
 // const getUsernameFromUserCell = (userCell: Element): string => {
 //   return (userCell?.lastChild as Element)?.children[1].children[0].children[0].children[0]
@@ -11,12 +11,12 @@ const getUsernameFromHeader = (userName: Element): string => {
 
 const getUsernameFromFeed = (username: Element): string => {
     return username.children[1].children[0].children[0].children[0].children[0].children[0].innerHTML
-}
+};
 
 const updateStoredCheckNames = async (checkNames: Set<string>): Promise<any> => {
-    const storedNames = await chrome.storage.local.get('storedBlueCheckNames')
+    const storedNames = await chrome.storage.local.get('storedBlueCheckNames');
 
-    let allNames = new Set<string>([...checkNames])
+    let allNames = new Set<string>([...checkNames]);
 
     if (storedNames.storedBlueCheckNames !== undefined) {
         allNames = new Set([...allNames, ...storedNames.storedBlueCheckNames])
@@ -25,11 +25,11 @@ const updateStoredCheckNames = async (checkNames: Set<string>): Promise<any> => 
     await chrome.storage.local.set({
         storedBlueCheckNames: [...allNames]
     })
-}
+};
 
 const isBlueCheck = (element: Element): boolean => {
-    const checkSelector = '[data-testid="icon-verified"]'
-    const possibleChecks = element.querySelectorAll(checkSelector)
+    const checkSelector = '[data-testid="icon-verified"]';
+    const possibleChecks = element.querySelectorAll(checkSelector);
 
     if (possibleChecks.length <= 0) {
         return false
@@ -38,59 +38,59 @@ const isBlueCheck = (element: Element): boolean => {
     if (possibleChecks[0].children[0].children.length > 1) {
         return hideGold === true
     } else {
-        const fill = possibleChecks[0].children[0].children[0].getAttribute('fill')
+        const fill = possibleChecks[0].children[0].children[0].getAttribute('fill');
 
         if (fill !== null && typeof fill !== 'undefined') {
             return hideGrey === true
         }
     }
     return true
-}
+};
 
-let unhideCount = 0
-let shouldHide: (boolean | null) = null
-let hideGold: (boolean | null) = null
-let hideGrey: (boolean | null) = null
-let fullyHide: (boolean | null) = null
-let hideRepliesOnly: (boolean | null) = null
+let unhideCount = 0;
+let shouldHide: (boolean | null) = null;
+let hideGold: (boolean | null) = null;
+let hideGrey: (boolean | null) = null;
+let fullyHide: (boolean | null) = null;
+let hideRepliesOnly: (boolean | null) = null;
 
 chrome.storage.local.get('hidingEnabled', (result) => {
     if (result.hidingEnabled !== undefined) {
         shouldHide = result.hidingEnabled
     }
-})
+});
 
 chrome.storage.local.get('hideGoldChecks', (result) => {
     if (result.hideGoldChecks !== undefined) {
         hideGold = result.hideGoldChecks
     }
-})
+});
 
 chrome.storage.local.get('hideGreyChecks', (result) => {
     if (result.hideGreyChecks !== undefined) {
         hideGrey = result.hideGreyChecks
     }
-})
+});
 
 chrome.storage.local.get('fullyHide', (result) => {
     if (result.fullyHide !== undefined) {
         fullyHide = result.fullyHide
     }
-})
+});
 
 chrome.storage.local.get('hideRepliesOnly', (result) => {
     if (result.hideRepliesOnly !== undefined) {
         hideRepliesOnly = result.hideRepliesOnly
     }
-})
+});
 
 const readPage = (): void => {
     // Check if we're on the timeline
     if (hideRepliesOnly === true) {
-        const title = document.title
+        const title = document.title;
 
         if (title.endsWith('Home / X')) {
-            updateStoredCheckNames(new Set<string>())
+            updateStoredCheckNames(new Set<string>());
 
             chrome.runtime.sendMessage(
                 {
@@ -98,21 +98,21 @@ const readPage = (): void => {
                     type: 'parsed-page',
                     message: {names: []}
                 }
-            )
+            );
             return
         }
     }
 
     // Detects profile page header blue check
-    const usernameHeader = document.querySelectorAll('[data-testid="UserName"]')
+    const usernameHeader = document.querySelectorAll('[data-testid="UserName"]');
 
     // Detects "You might like" page blue checks
     // const UserCells = document.querySelectorAll('[data-testid="UserCell"]')
 
     // Detects feed blue checks
-    const usernameFeed = document.querySelectorAll('[data-testid="User-Name"]')
+    const usernameFeed = document.querySelectorAll('[data-testid="User-Name"]');
 
-    const checkNames = new Set<string>()
+    const checkNames = new Set<string>();
 
     usernameHeader.forEach((userName) => {
         if (isBlueCheck(userName)) {
@@ -120,7 +120,7 @@ const readPage = (): void => {
             // userName.setAttribute('style', 'display: none;')
             checkNames.add(getUsernameFromHeader(userName))
         }
-    })
+    });
 
     // UserCells.forEach((userCell) => {
     //   if (isBlueCheck(userCell)) {
@@ -133,28 +133,28 @@ const readPage = (): void => {
 
     usernameFeed.forEach((username) => {
         if (isBlueCheck(username)) {
-            const extractedName = getUsernameFromFeed(username)
+            const extractedName = getUsernameFromFeed(username);
 
             if (shouldHide === true) {
-                const hideStyle = 'display: none;'
+                const hideStyle = 'display: none;';
                 // const hideStyle = 'background-color: #345345;'
-                const parentContainer = username.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement
+                const parentContainer = username.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement;
 
                 if (parentContainer !== undefined && parentContainer != null) {
-                    const hiddenDiv = document.createElement('div')
-                    const id = `unhide-${unhideCount++}`
+                    const hiddenDiv = document.createElement('div');
+                    const id = `unhide-${unhideCount++}`;
 
-                    hiddenDiv.setAttribute('style', 'padding: 12px; font-family: sans-serif; color: #1d9bf0; border-bottom: 1px solid #1d9bf0;opacity: 0.5;')
-                    hiddenDiv.innerHTML = extractedName + ' hidden by extension <u id="' + id + '" style="cursor: pointer;">Show</u>'
+                    hiddenDiv.setAttribute('style', 'padding: 12px; font-family: sans-serif; color: #1d9bf0; border-bottom: 1px solid #1d9bf0;opacity: 0.5;');
+                    hiddenDiv.innerHTML = extractedName + ' hidden by extension <u id="' + id + '" style="cursor: pointer;">Show</u>';
 
                     if (parentContainer.children.length === 1) {
                         // Single tweet on timeline
                         if (fullyHide === false) {
-                            parentContainer.appendChild(hiddenDiv)
+                            parentContainer.appendChild(hiddenDiv);
 
                             document.getElementById(id)?.addEventListener('click', (event) => {
-                                event.preventDefault()
-                                parentContainer.children[0].lastElementChild?.setAttribute('style', '')
+                                event.preventDefault();
+                                parentContainer.children[0].lastElementChild?.setAttribute('style', '');
                                 parentContainer.children[1].setAttribute('style', 'display: none;')
                             })
                         }
@@ -163,11 +163,11 @@ const readPage = (): void => {
                     } else if (parentContainer.children.length === 4) {
                         // Quote tweet on timeline
                         if (fullyHide === false) {
-                            parentContainer.insertBefore(hiddenDiv, parentContainer.children[3])
+                            parentContainer.insertBefore(hiddenDiv, parentContainer.children[3]);
 
                             document.getElementById(id)?.addEventListener('click', (event) => {
-                                event.preventDefault()
-                                parentContainer.children[2].lastElementChild?.setAttribute('style', '')
+                                event.preventDefault();
+                                parentContainer.children[2].lastElementChild?.setAttribute('style', '');
                                 parentContainer.children[3].setAttribute('style', 'display: none;')
                             })
                         }
@@ -179,9 +179,9 @@ const readPage = (): void => {
 
             checkNames.add(extractedName)
         }
-    })
+    });
 
-    updateStoredCheckNames(checkNames)
+    updateStoredCheckNames(checkNames);
 
     chrome.runtime.sendMessage(
         {
@@ -190,11 +190,11 @@ const readPage = (): void => {
             message: {names: [...checkNames]}
         }
     )
-}
+};
 
-readPage()
+readPage();
 
 const intervalId = 250;
-setInterval(readPage, intervalId)
+setInterval(readPage, intervalId);
 
 export {}

@@ -22,7 +22,7 @@ const Switch = styled.div`
         background: rgb(255, 255, 255);
         transform: translate(0, -50%);
     }
-`
+`;
 
 const Input = styled.input`
     display: none;
@@ -34,13 +34,14 @@ const Input = styled.input`
             transform: translate(32px, -50%);
         }
     }
-`
+`;
+
 const Label = styled.label`
     display: flex;
     align-items: center;
     gap: 10px; // TODO: Test removing this; incompatible with IE 11
     cursor: pointer;
-`
+`;
 
 interface ToggleSwitchProps {
     onText: string
@@ -52,7 +53,7 @@ interface ToggleSwitchProps {
 const ToggleSwitch = ({onText, offText, handleChecked, checked}: ToggleSwitchProps): ReactElement | null => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         handleChecked(e.target.checked)
-    }
+    };
 
     return (
         <Label>
@@ -61,6 +62,6 @@ const ToggleSwitch = ({onText, offText, handleChecked, checked}: ToggleSwitchPro
             <span>{(checked ?? false) ? onText : offText}</span>
         </Label>
     )
-}
+};
 
 export default ToggleSwitch

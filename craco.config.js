@@ -21,7 +21,7 @@ module.exports = {
                     runtimeChunk: false,
                     minimize: false
                 }
-            }
+            };
         }
     }
-}
+};
