@@ -39,8 +39,12 @@ const Input = styled.input`
 const Label = styled.label`
     display: flex;
     align-items: center;
-    gap: 10px; // TODO: Test removing this; incompatible with IE 11
     cursor: pointer;
+
+    // Use feature detection for gap (fixes IE11 issue)
+    @supports (gap: 10px) {
+        gap: 10px;
+    }
 `;
 
 interface ToggleSwitchProps {

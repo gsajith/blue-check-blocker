@@ -20,11 +20,15 @@ const AccordionHeader = styled.div`
     margin-left: 10px;
     margin-right: 10px;
     display: flex;
-    flex-direction: row; // TODO: Test removing this; incompatible with Firefox 64
     align-items: center;
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
+
+    // Use feature detection for flex-direction (fixes Firefox 64 issue)
+    @supports (flex-direction: row) {
+        flex-direction: row;
+    }
 `;
 
 const AccordionTitleCount = styled.span`
