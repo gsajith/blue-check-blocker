@@ -14,6 +14,10 @@ export const getCurrentTabUId = (
     const queryInfo = {active: true, lastFocusedWindow: true};
 
     chrome.tabs.query(queryInfo, (tabs) => {
-        callback(tabs[0].id)
-    })
+        if (tabs.length > 0) {
+            callback(tabs[0].id);
+        } else {
+            callback(undefined); // Handle the case where no active tab is found
+        }
+    });
 };
