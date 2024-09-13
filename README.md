@@ -14,9 +14,8 @@ on [Twitter/X](https://twitter.com).
 1. Clone the repository.
 2. Install dependencies with `yarn install`.
 3. Create a `build` folder with `yarn run build`.
-4. Follow the instructions
-   to [load an unpacked Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
-   using the `build` folder generated in the previous step.
+4. Load the generated `build` folder as [an unpacked Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked).
+5. Open Twitter/X and enjoy the blue-check-free experience!
 
 You can also download the [latest artifact](https://github.com/gsajith/blue-check-hider/actions)
 or [release](https://github.com/gsajith/blue-check-hider/releases) from this repository.
