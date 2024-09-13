@@ -46,31 +46,23 @@ let hideGreyChecks: (boolean | null) = null;
 let fullyHide: (boolean | null) = null;
 let hideRepliesOnly: (boolean | null) = null;
 
-chrome.storage.local.get('hidingEnabled', (result) => {
+chrome.storage.local.get(['hidingEnabled', 'hideGoldChecks', 'hideGreyChecks', 'fullyHide', 'hideRepliesOnly'], (result) => {
     if (result.hidingEnabled !== undefined) {
         hidingEnabled = result.hidingEnabled
     }
-});
 
-chrome.storage.local.get('hideGoldChecks', (result) => {
     if (result.hideGoldChecks !== undefined) {
         hideGoldChecks = result.hideGoldChecks
     }
-});
 
-chrome.storage.local.get('hideGreyChecks', (result) => {
     if (result.hideGreyChecks !== undefined) {
         hideGreyChecks = result.hideGreyChecks
     }
-});
 
-chrome.storage.local.get('fullyHide', (result) => {
     if (result.fullyHide !== undefined) {
         fullyHide = result.fullyHide
     }
-});
 
-chrome.storage.local.get('hideRepliesOnly', (result) => {
     if (result.hideRepliesOnly !== undefined) {
         hideRepliesOnly = result.hideRepliesOnly
     }
