@@ -28,39 +28,39 @@ const isBlueCheck = (element: Element): boolean => {
     }
 
     if (possibleChecks[0].children[0].children.length > 1) {
-        return hideGold === true
+        return hideGoldChecks === true
     } else {
         const fill = possibleChecks[0].children[0].children[0].getAttribute('fill');
 
         if (fill !== null && typeof fill !== 'undefined') {
-            return hideGrey === true
+            return hideGreyChecks === true
         }
     }
     return true
 };
 
 let unhideCount = 0;
-let shouldHide: (boolean | null) = null;
-let hideGold: (boolean | null) = null;
-let hideGrey: (boolean | null) = null;
+let hidingEnabled: (boolean | null) = null;
+let hideGoldChecks: (boolean | null) = null;
+let hideGreyChecks: (boolean | null) = null;
 let fullyHide: (boolean | null) = null;
 let hideRepliesOnly: (boolean | null) = null;
 
 chrome.storage.local.get('hidingEnabled', (result) => {
     if (result.hidingEnabled !== undefined) {
-        shouldHide = result.hidingEnabled
+        hidingEnabled = result.hidingEnabled
     }
 });
 
 chrome.storage.local.get('hideGoldChecks', (result) => {
     if (result.hideGoldChecks !== undefined) {
-        hideGold = result.hideGoldChecks
+        hideGoldChecks = result.hideGoldChecks
     }
 });
 
 chrome.storage.local.get('hideGreyChecks', (result) => {
     if (result.hideGreyChecks !== undefined) {
-        hideGrey = result.hideGreyChecks
+        hideGreyChecks = result.hideGreyChecks
     }
 });
 
@@ -133,7 +133,7 @@ const readPage = (): void => {
         if (isBlueCheck(username)) {
             const extractedName = getUsernameFromFeed(username);
 
-            if (shouldHide === true) {
+            if (hidingEnabled === true) {
                 const hideStyle = 'display: none;';
                 // const hideStyle = 'background-color: #345345;'
                 const parentContainer = username.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement;
