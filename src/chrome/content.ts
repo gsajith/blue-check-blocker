@@ -1,9 +1,9 @@
 const getUsernameFromHeader = (userName: Element): string => {
-    return userName.children[0].children[0].children[1].children[0].children[0].children[0].children[0].innerHTML
+    return userName.children[0]?.children[0]?.children[1]?.children[0]?.children[0]?.children[0]?.children[0]?.innerHTML || '';
 };
 
 const getUsernameFromFeed = (username: Element): string => {
-    return username.children[1].children[0].children[0].children[0].children[0].children[0].innerHTML
+    return username.children[1]?.children[0]?.children[0]?.children[0]?.children[0]?.children[0]?.innerHTML || '';
 };
 
 const updateStoredCheckNames = async (checkNames: Set<string>): Promise<any> => {
