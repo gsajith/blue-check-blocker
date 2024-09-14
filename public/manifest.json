@@ -1,9 +1,12 @@
 {
   "manifest_version": 3,
   "name": "Blue Check Hider",
-  "version": "1.3",
-  "description": "Identify and hide Twitter Blue users",
-  "permissions": ["activeTab", "storage"],
+  "version": "1.4.0",
+  "description": "Identify and hide Twitter Blue users.",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
   "icons": {
     "16": "icon-16.png",
     "32": "icon-32.png",
@@ -12,13 +15,15 @@
   },
   "content_scripts": [
     {
-      "js": ["./static/js/content.js"],
+      "js": [
+        "./static/js/content.js"
+      ],
       "run_at": "document_end",
       "matches": [
         "https://*.twitter.com/*",
-        "http://*.twitter.com/*",
         "https://twitter.com/*",
-        "http://twitter.com/*"
+        "https://*.x.com/*",
+        "https://x.com/*"
       ]
     }
   ],

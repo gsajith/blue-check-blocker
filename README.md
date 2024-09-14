@@ -1,37 +1,26 @@
 # Blue Check Hider
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![CodeQL](https://github.com/gsajith/blue-check-hider/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/gsajith/blue-check-hider/actions/workflows/github-code-scanning/codeql)
+[![Downloads](https://img.shields.io/github/downloads/gsajith/blue-check-hider/total.svg)](https://github.com/gsajith/blue-check-hider/releases)
+
 ![Icon](./public/icon-128.png)
 
-Blue Check Hider is a Chrome extension which hides any posts made by people with a verified blue Checkmark on [twitter.com](https://twitter.com).
+**Blue Check Hider** is a Chrome extension that hides posts from people with a blue checkmark
+on [Twitter/X](https://twitter.com).
 
----
+## Compiling
 
-## Development
+1. Clone the repository.
+2. Install dependencies with `yarn install`.
+3. Create a `build` folder with `yarn run build`.
+4. Load the generated `build` folder as [an unpacked Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked).
+5. Open Twitter/X and enjoy the blue-check-free experience!
 
-- Clone the repo.
-- Install dependencies with `yarn install`.
-- Set up ESLint `npm init @eslint/config`
-- Create a `build` folder with `yarn run build` (once) or `yarn run watch` (continuous build).
-- Follow the instructions to [load an unpacked Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked), and load the `build` folder generated in the previous step
+You can also download the [latest artifact](https://github.com/gsajith/blue-check-hider/actions)
+or [release](https://github.com/gsajith/blue-check-hider/releases) from this repository.
 
----
+## Getting Help
 
-## Progress
-
-### Done
-
-- Scan DOM for blue checks
-- Send list of blue checks to Popup via message
-- Store both blue checks on current page, and all detected blue checks
-
-### To do
-
-- Set up backend DB
-- Button to send data to backend DB
-- Button to block the list
-
-## Reference
-
-- [Blue Blocker](https://github.com/kheina-com/Blue-Blocker/): Chrome and Firefox extension. Only blocks users that you come across.
-- [Twitter Block Chain](https://github.com/ceceradio/twitter-block-chain): Mass block all users on a followers/following page.
-- [Block The Blue](https://twitter.com/BlockTheBlue): Block list using [theblockbot.com](https://www.theblockbot.com/show-blocks/9BjDYX6HOyx7e4_4NT6-Y4YylY3UmpojDxvo6Zu8) to block 282,000+ Twitter Blue users.
+For support or queries, please open an issue in
+the [Issues section](https://github.com/gsajith/blue-check-hider/issues).
